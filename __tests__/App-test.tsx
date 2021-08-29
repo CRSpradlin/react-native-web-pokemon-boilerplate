@@ -7,8 +7,14 @@ import React from 'react';
 import App from '../src/App';
 
 // Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
+import {create, act} from 'react-test-renderer';
 
 it('renders correctly', () => {
-  renderer.create(<App />);
+  let root = {toJSON: () => {}};
+
+  act(() => {
+    root = create(<App />);
+  });
+
+  expect(root.toJSON()).toMatchSnapshot();
 });
