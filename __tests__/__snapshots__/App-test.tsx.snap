@@ -24,38 +24,8 @@ exports[`renders correctly 1`] = `
         }
       }
     >
-      Hello React Native Web!!!
+      Welcome to the Pokemon App!
     </Text>
-    <Text>
-      Count: 
-      0
-    </Text>
-    <View
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      nativeID="animatedComponent"
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "backgroundColor": "grey",
-          "borderRadius": 2,
-          "marginBottom": 20,
-          "opacity": 1,
-          "padding": 10,
-        }
-      }
-    >
-      <Text>
-        Click me bitch!
-      </Text>
-    </View>
     <View
       accessible={true}
       collapsable={false}
@@ -82,6 +52,19 @@ exports[`renders correctly 1`] = `
         Click for Pokemon!
       </Text>
     </View>
+    <Image
+      source={
+        Object {
+          "uri": "http://pngimg.com/uploads/pokeball/pokeball_PNG29.png",
+        }
+      }
+      style={
+        Object {
+          "height": 350,
+          "width": 350,
+        }
+      }
+    />
   </View>
 </View>
 `;

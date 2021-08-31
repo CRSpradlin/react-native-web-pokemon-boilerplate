@@ -5,6 +5,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Image,
 } from 'react-native';
 
 const {height} = Dimensions.get('window');
@@ -14,17 +15,15 @@ const pokeAPIs = {
 };
 
 const App = () => {
-  const [count, setCount] = React.useState(0);
   const [pokeName, setPokeName] = React.useState('Click for Pokemon!');
-
-  const incrementCount = () => {
-    setCount(count + 1);
-  };
+  const [pokeImgUrl, setPokeImgUrl] = React.useState({
+    uri: 'http://pngimg.com/uploads/pokeball/pokeball_PNG29.png',
+  });
 
   const randPokeId = (maxNum: any) => {
     return Math.floor(Math.random() * maxNum + 1);
   };
-  const updateWithNewPokeId = async () => {
+  const updateWithNewPokemon = async () => {
     const pokeCountResp = await fetch(`${pokeAPIs.count}`, {
       method: 'GET',
       headers: {
@@ -42,24 +41,23 @@ const App = () => {
       },
     );
     const pokemonRespData = await pokemonResp.json();
+    setPokeImgUrl(currState => {
+      currState.uri = pokemonRespData.sprites.front_default;
+      return currState;
+    });
     setPokeName(pokemonRespData.name);
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.center}>
-        <Text style={styles.bottomSpacing}>Hello React Native Web!!!</Text>
-        <Text>Count: {count}</Text>
+        <Text style={styles.bottomSpacing}>Welcome to the Pokemon App!</Text>
         <TouchableOpacity
           style={[styles.button, styles.bottomSpacing]}
-          onPress={_props => incrementCount()}>
-          <Text>Click me bitch!</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.button, styles.bottomSpacing]}
-          onPress={_props => updateWithNewPokeId()}>
+          onPress={_props => updateWithNewPokemon()}>
           <Text>{pokeName}</Text>
         </TouchableOpacity>
+        <Image source={pokeImgUrl} style={styles.image} />
       </View>
     </View>
   );
@@ -78,6 +76,10 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: 'grey',
     borderRadius: 2,
+  },
+  image: {
+    height: 350,
+    width: 350,
   },
   bottomSpacing: {
     marginBottom: 20,
