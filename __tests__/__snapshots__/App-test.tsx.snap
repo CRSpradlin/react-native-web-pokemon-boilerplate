@@ -2,8 +2,10 @@
 
 exports[`renders correctly 1`] = `
 <View
+  onLayout={[Function]}
   style={
     Object {
+      "flexDirection": "row",
       "height": 1334,
     }
   }
@@ -11,8 +13,19 @@ exports[`renders correctly 1`] = `
   <View
     style={
       Object {
+        "display": "none",
+      }
+    }
+  >
+    <Text>
+      750
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
         "alignItems": "center",
-        "flex": 1,
+        "flex": 4,
         "justifyContent": "center",
       }
     }
@@ -55,13 +68,13 @@ exports[`renders correctly 1`] = `
     <Image
       source={
         Object {
-          "uri": "http://pngimg.com/uploads/pokeball/pokeball_PNG29.png",
+          "uri": "https://pngimg.com/uploads/pokeball/pokeball_PNG29.png",
         }
       }
       style={
         Object {
-          "height": 350,
-          "width": 350,
+          "height": 300,
+          "width": 300,
         }
       }
     />
